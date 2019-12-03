@@ -27,12 +27,18 @@
         <p id="game-over-title">Game Over</p>
         <p class="reset" id="try-again">Try Again</p>
     </div>
+
+    <div class="win-win">
+            <p id="game-over-title">Game Over</p>
+            <p class="reset" id="try-again">Try Again</p>
+    </div>
+
     <div class="container-fluid wrapper">
         <div id="title">Memory Game</div>
         <div class="info">
             <p id="difficult">difficult</p>
             <p class='reset' id="reset">Reset</p>
-            <p id="remaining-plays">Remaining remaining-plays</p>
+            <p id="remaining-plays">Remaining</p>
         </div>
         <div class="playboard">
         <div class="row">
@@ -78,8 +84,11 @@
         let hard = false;
         let remainingPlays = 0;
         let difficultTitle = $('#difficult');
+        let remainingTitle = $('#remaining-plays');
         const reset = $('.reset');
         const gameOverDisplay = $('.game-over');
+        const winDisplay = $('.win-win');
+        let playWin = 0;
 
         console.log(botao);
 
@@ -92,8 +101,10 @@
                 console.log(select);
                 if (select === 2) {
                     setTimeout(turnHidden,1000);
-                    console.log(remainingPlays); 
-                    remainingPlays --; 
+                    remainingPlays--;
+                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
+                    console.log(`Remaining Plays: ${remainingPlays}`);
+                    console.log(`Plays to Win: ${playWin}`);
                     gameOver();
                 }
             });
@@ -101,6 +112,7 @@
         function turnHidden () {
             if (select === 2) {
                 if (data[0] === data[1]) {
+                    playWin++;
                     select = 0;
                     data = [];
                     turnWinner();
@@ -119,6 +131,7 @@
                 if ($(this).hasClass('shown')) {
                     $(this).addClass('winner');
                 };
+            win();
                     })
         }
 
@@ -130,26 +143,31 @@
                 if (easy === true && normal === false && hard === false) {
                     remainingPlays = 30;
                     difficultTitle.html('Easy');
+                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
                 } else if (easy = false && normal === true && hard === false) {
                     remainingPlays = 15;
+                    difficultTitle.html('Normal');
+                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
                 } else if (easy === false && normal === false && hard === true) {
                     remainingPlays = 9;
+                    difficultTitle.html('Hard');
+                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
                 }
                 console.log(remainingPlays)
             });
 
         easyChoice.click (function () {
-            easyChoice.css('background-color','red');
+            easyChoice.toggleClass('active-choice');
             easy = true;
         });
 
         normalChoice.click (function () {
-            normalChoice.css('background-color','red');
+            normalChoice.toggleClass('active-choice');
             normal = true;
         });
 
         hardChoice.click (function () {
-            hardChoice.css('background-color','red');
+            hardChoice.toggleClass('active-choice');
             hard = true;
         });
 
@@ -164,20 +182,27 @@
             gameDisplay.css('display','none');
             botao.removeClass('shown');
             botao.removeClass('winner');
-            remainingPlays = '';
+            easyChoice.removeClass('active-choice');
+            normalChoice.removeClass('active-choice');
+            hardChoice.removeClass('active-choice');
+            remainingPlays = 0;
             easy = false;
             normal = false;
             hard = false;
         })
 
         function gameOver () {
-            if (remainingPlays = 0) {
+            if (remainingPlays === 0) {
                 gameDisplay.css('display','none');
                 gameOverDisplay.css('display','flex');
             }
         }
 
-
+        function win () {
+            if (playWin === 8) {
+                winDisplay.css('display','flex');
+            };
+        };
 
     </script>
 </body>

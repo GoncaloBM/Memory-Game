@@ -37,6 +37,10 @@
     background-color: red;
 }
 
+.active-choice {
+    background-color: red;
+}
+
 #start-game-button {
     font-size: 3rem;
     padding: 5px;
@@ -110,7 +114,7 @@
     margin: 10px
 }
 
-.game-over {
+.game-over, .win-win {
     display: none;
     align-items: center;
     justify-content: center;
