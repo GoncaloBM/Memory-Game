@@ -1,209 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="memorygame.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="memorygame.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <title>Memory Game</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="start-game">
-        <p id="start-title">Welcome to Memory Game</p>
-        <p id="choose-dif">Choose your difficult</p>
-        <div class="difficult-choice">
-            <p class="choice" id="easy-choice">Easy</p>
-            <p class="choice" id="normal-choice">Normal</p>
-            <p class="choice" id="hard-choice">Hard</p>
-        </div>
-        <p id="start-game-button">Start Game</p>
-        <p id="good-luck">Good Luck</p>
+      <p id="start-title">Welcome to Memory Game</p>
+      <p id="choose-dif">Choose your difficult</p>
+      <div class="difficult-choice">
+        <p class="choice" id="easy-choice">Easy</p>
+        <p class="choice" id="normal-choice">Normal</p>
+        <p class="choice" id="hard-choice">Hard</p>
+      </div>
+      <p id="start-game-button">Start Game</p>
+      <p id="good-luck">Good Luck</p>
     </div>
     <div class="game-over">
-        <p id="game-over-title">Game Over</p>
-        <p class="reset" id="try-again">Try Again</p>
+      <p id="game-over-title">Game Over</p>
+      <p class="reset" id="try-again">Try Again</p>
     </div>
 
     <div class="win-win">
-            <p id="game-over-title">Game Over</p>
-            <p class="reset" id="try-again">Try Again</p>
+      <p id="win-title">You won! Congratulations!</p>
+      <p class="reset" id="try-again">Try Again</p>
     </div>
 
     <div class="container-fluid wrapper">
-        <div id="title">Memory Game</div>
-        <div class="info">
-            <p id="difficult">difficult</p>
-            <p class='reset' id="reset">Reset</p>
-            <p id="remaining-plays">Remaining</p>
-        </div>
-        <div class="playboard">
+      <div id="title">Memory Game</div>
+      <div class="info">
+        <p id="difficult">difficult</p>
+        <p class="reset" id="reset">Reset</p>
+        <p id="remaining-plays">Remaining</p>
+      </div>
+      <div class="playboard">
         <div class="row">
-            <div class="col c2x2 hidden">1</div>
-            <div class="col c2x2 hidden">4</div>
-            <div class="col c4x4 hidden">6</div>
-            <div class="col c4x4 hidden">6</div>
-        </div>
-        <div class="row">
-            <div class="col c2x2 hidden">2</div>
-            <div class="col c2x2 hidden">5</div>
-            <div class="col c4x4 hidden">1</div>
-            <div class="col c4x4 hidden">4</div>
-            </div>
-        <div class="row">
-            <div class="col c4x4 hidden">3</div>
-            <div class="col c4x4 hidden">7</div>
-            <div class="col c4x4 hidden">8</div>
-            <div class="col c4x4 hidden">7</div>
+          <div class="col c2x2 hidden">1</div>
+          <div class="col c2x2 hidden">4</div>
+          <div class="col c4x4 hidden">6</div>
+          <div class="col c4x4 hidden">6</div>
         </div>
         <div class="row">
-            <div class="col c4x4 hidden">5</div>
-            <div class="col c4x4 hidden">3</div>
-            <div class="col c4x4 hidden">8</div>
-            <div class="col c4x4 hidden">2</div>
+          <div class="col c2x2 hidden">2</div>
+          <div class="col c2x2 hidden">5</div>
+          <div class="col c4x4 hidden">1</div>
+          <div class="col c4x4 hidden">4</div>
         </div>
+        <div class="row">
+          <div class="col c4x4 hidden">3</div>
+          <div class="col c4x4 hidden">7</div>
+          <div class="col c4x4 hidden">8</div>
+          <div class="col c4x4 hidden">7</div>
         </div>
+        <div class="row">
+          <div class="col c4x4 hidden">5</div>
+          <div class="col c4x4 hidden">3</div>
+          <div class="col c4x4 hidden">8</div>
+          <div class="col c4x4 hidden">2</div>
+        </div>
+      </div>
     </div>
 
     <script>
-        const botao = $('.col');
-        let select = 0;
-        let data = [];
-        let number = 0;
-        const startGame = $('#start-game-button');
-        const startDisplay = $('.start-game');
-        const gameDisplay = $('.wrapper');
-        const easyChoice = $('#easy-choice');
-        const normalChoice = $('#normal-choice');
-        const hardChoice = $('#hard-choice');
-        let easy = false;
-        let normal = false;
-        let hard = false;
-        let remainingPlays = 0;
-        let difficultTitle = $('#difficult');
-        let remainingTitle = $('#remaining-plays');
-        const reset = $('.reset');
-        const gameOverDisplay = $('.game-over');
-        const winDisplay = $('.win-win');
-        let playWin = 0;
+      const botao = $(".col");
+      let select = 0;
+      let data = [];
+      let number = 0;
+      const startGame = $("#start-game-button");
+      const startDisplay = $(".start-game");
+      const gameDisplay = $(".wrapper");
+      const easyChoice = $("#easy-choice");
+      const normalChoice = $("#normal-choice");
+      const hardChoice = $("#hard-choice");
+      let easy = false;
+      let normal = false;
+      let hard = false;
+      let remainingPlays = 0;
+      let difficultTitle = $("#difficult");
+      let remainingTitle = $("#remaining-plays");
+      const reset = $(".reset");
+      const gameOverDisplay = $(".game-over");
+      const winDisplay = $(".win-win");
+      let playWin = 0;
+      let playboard = $(".playboard");
+      let arrayOfNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
-        console.log(botao);
+      function shuffleArray(arrayOfNumbers) {
+        for (let a = arrayOfNumbers.length - 1; a > 0; a--) {
+          let b = Math.floor(Math.random() * (a + 1));
+          [arrayOfNumbers[a], arrayOfNumbers[b]] = [
+            arrayOfNumbers[b],
+            arrayOfNumbers[a]
+          ];
+        }
+      }
 
-        function selectCard () {
-            botao.click (function() {
-                $(this).addClass('shown');
-                select ++;
-                data.push($(this).text())
-                console.log(data);
-                console.log(select);
-                if (select === 2) {
-                    setTimeout(turnHidden,1000);
-                    remainingPlays--;
-                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
-                    console.log(`Remaining Plays: ${remainingPlays}`);
-                    console.log(`Plays to Win: ${playWin}`);
-                    gameOver();
-                }
-            });
-        };
-        function turnHidden () {
-            if (select === 2) {
-                if (data[0] === data[1]) {
-                    playWin++;
-                    select = 0;
-                    data = [];
-                    turnWinner();
-                } else {
-            botao.removeClass('shown');
+      function shuffleCards() {
+        for (let c = 0; c < botao.length; c++) {
+          botao.eq(c).text(`${arrayOfNumbers[c]}`);
+        }
+      }
+
+      function selectCard() {
+        botao.click(function() {
+          $(this).addClass("shown");
+          select++;
+          data.push($(this).text());
+          console.log(data);
+          console.log(select);
+          if (select === 2) {
+            botao.css('pointer-events','none');
+            setTimeout(turnHidden, 1000);
+            remainingPlays--;
+            remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
+            console.log(`Remaining Plays: ${remainingPlays}`);
+            console.log(`Plays to Win: ${playWin}`);
+            gameOver();
+          }
+        });
+      }
+
+      function turnHidden() {
+        botao.css('pointer-events','');
+        if (select === 2) {
+          if (data[0] === data[1]) {
+            playWin++;
             select = 0;
             data = [];
-                };
-            };
-        };
-
-        selectCard();
-
-        function turnWinner () {
-            botao.each(function() {
-                if ($(this).hasClass('shown')) {
-                    $(this).addClass('winner');
-                };
-            win();
-                    })
+            turnWinner();
+          } else {
+            botao.removeClass("shown");
+            select = 0;
+            data = [];
+          }
         }
+      }
 
-            startGame.click (function () {
-                startDisplay.css('display','none');
-                gameDisplay.css('display','flex');
-                botao.removeClass('shown');
-                botao.removeClass('winner');
-                if (easy === true && normal === false && hard === false) {
-                    remainingPlays = 30;
-                    difficultTitle.html('Easy');
-                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
-                } else if (easy = false && normal === true && hard === false) {
-                    remainingPlays = 15;
-                    difficultTitle.html('Normal');
-                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
-                } else if (easy === false && normal === false && hard === true) {
-                    remainingPlays = 9;
-                    difficultTitle.html('Hard');
-                    remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
-                }
-                console.log(remainingPlays)
-            });
+      selectCard();
 
-        easyChoice.click (function () {
-            easyChoice.toggleClass('active-choice');
-            easy = true;
+      function turnWinner() {
+        botao.each(function() {
+          if ($(this).hasClass("shown")) {
+            $(this).addClass("winner");
+          }
+          win();
         });
+      }
 
-        normalChoice.click (function () {
-            normalChoice.toggleClass('active-choice');
-            normal = true;
-        });
-
-        hardChoice.click (function () {
-            hardChoice.toggleClass('active-choice');
-            hard = true;
-        });
-
-        function gameOver () {
-            if (remainingPlays === 0) {
-                gameDisplay.css('display','none');
-            }
-        };
-
-        reset.click(function () {
-            startDisplay.css('display','flex');
-            gameDisplay.css('display','none');
-            botao.removeClass('shown');
-            botao.removeClass('winner');
-            easyChoice.removeClass('active-choice');
-            normalChoice.removeClass('active-choice');
-            hardChoice.removeClass('active-choice');
-            remainingPlays = 0;
-            easy = false;
-            normal = false;
-            hard = false;
-        })
-
-        function gameOver () {
-            if (remainingPlays === 0) {
-                gameDisplay.css('display','none');
-                gameOverDisplay.css('display','flex');
-            }
+      startGame.click(function() {
+        startDisplay.css("display", "none");
+        gameDisplay.css("display", "flex");
+        botao.removeClass("shown");
+        botao.removeClass("winner");
+        shuffleArray(arrayOfNumbers);
+        shuffleCards();
+        if (easy === true && normal === false && hard === false) {
+          remainingPlays = 30;
+          difficultTitle.html("Easy");
+          remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
+        } else if ((easy = false && normal === true && hard === false)) {
+          remainingPlays = 15;
+          difficultTitle.html("Normal");
+          remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
+        } else if (easy === false && normal === false && hard === true) {
+          remainingPlays = 9;
+          difficultTitle.html("Hard");
+          remainingTitle.html(`Remaining Plays: ${remainingPlays}`);
         }
+        console.log(remainingPlays);
+      });
 
-        function win () {
-            if (playWin === 8) {
-                winDisplay.css('display','flex');
-            };
-        };
+      easyChoice.click(function() {
+        easyChoice.toggleClass("active-choice");
+        easy = true;
+      });
 
+      normalChoice.click(function() {
+        normalChoice.toggleClass("active-choice");
+        normal = true;
+      });
+
+      hardChoice.click(function() {
+        hardChoice.toggleClass("active-choice");
+        hard = true;
+      });
+
+    //   function gameOver() {
+    //     if (remainingPlays === 0) {
+    //       gameDisplay.css("display", "none");
+    //     }
+    //   }
+
+      reset.click(function() {
+        startDisplay.css("display", "flex");
+        gameDisplay.css("display", "none");
+        gameOverDisplay.css("display", "none");
+        botao.removeClass("shown");
+        botao.removeClass("winner");
+        easyChoice.removeClass("active-choice");
+        normalChoice.removeClass("active-choice");
+        hardChoice.removeClass("active-choice");
+        remainingPlays = 0;
+        easy = false;
+        normal = false;
+        hard = false;
+      });
+
+      function gameOver() {
+        if (remainingPlays === 0) {
+          gameDisplay.css("display", "none");
+          gameOverDisplay.css("display", "flex");
+        }
+      }
+
+      function win() {
+        if (playWin === 8) {
+          winDisplay.css("display", "flex");
+          gameDisplay.css("display", "none");
+        }
+      }
     </script>
-</body>
+  </body>
 </html>

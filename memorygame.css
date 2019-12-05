@@ -78,7 +78,7 @@
     width: 100px;
     height: 100px;
     border: 1px solid red;
-    color: black;
+    color: transparent;
     margin: 5px;
     align-items: center;
     justify-content: center;
